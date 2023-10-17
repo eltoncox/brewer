@@ -23,8 +23,7 @@ public class CervejasController {
 
 	@RequestMapping("/cervejas/novo")
 	public String novo(Cerveja cerveja) {
-		logger.error("Aqui é um log nível error!");
-		logger.info("Aqui é um logger nível info");		
+				
 		
 		return "cerveja/CadastroCerveja";
 	}
