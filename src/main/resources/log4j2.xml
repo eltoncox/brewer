@@ -8,7 +8,9 @@
 	</Appenders>
 	
 	<Loggers>
-		<Logger name="com.elton.cervejas.controller" level="info"/>
+		<Logger name="com.elton.beers.controller" level="erro"/>
+		
+		<Logger name="org.hibernate" level="debug"/>
 	
 		<Root level="error">
 			<AppenderRef ref="Console" />

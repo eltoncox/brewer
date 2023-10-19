@@ -5,13 +5,14 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import com.elton.beers.config.JPAConfig;
+import com.elton.beers.config.ServiceConfig;
 import com.elton.beers.config.WebConfig;
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {		
-		return new Class<?>[] {JPAConfig.class};
+		return new Class<?>[] {JPAConfig.class, ServiceConfig.class};
 	}
 
 	@Override

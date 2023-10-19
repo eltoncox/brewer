@@ -15,6 +15,7 @@ import com.elton.beers.model.Cerveja;
 import com.elton.beers.model.Origem;
 import com.elton.beers.model.Sabor;
 import com.elton.beers.repository.Estilos;
+import com.elton.beers.service.CadastroCervejaService;
 
 
 @Controller
@@ -22,7 +23,10 @@ public class CervejasController {
 	
 	@Autowired
 	private Estilos estilos;
-
+	
+	@Autowired
+	private CadastroCervejaService cadastroCervejaService;
+	
 	@RequestMapping("/cervejas/novo")
 	public ModelAndView novo(Cerveja cerveja) {
 		ModelAndView mv = new ModelAndView("cerveja/CadastroCerveja");
@@ -34,22 +38,16 @@ public class CervejasController {
 	
 	@RequestMapping(value = "/cervejas/novo", method = RequestMethod.POST)
 	public ModelAndView cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
-		/*if (result.hasErrors()) {
+		if (result.hasErrors()) {
 			return novo(cerveja);
-		}*/
+		}
 		
-		// Salvar no banco de dados...
+		cadastroCervejaService.salvar(cerveja);
 		attributes.addFlashAttribute("mensagem", "Cerveja salva com sucesso!");
-		System.out.println(">>> sku: " + cerveja.getSku());
-		System.out.println(">>> sabor: " + cerveja.getSabor());
-		System.out.println(">>> Origem: " + cerveja.getOrigem());
-		
-		System.out.println("cerveja.getEstilo(): " + cerveja.getEstilo());
-		if (cerveja.getEstilo() != null)
-			System.out.println(">>> Estilo: " + cerveja.getEstilo().getCodigo());
-		
 		return new ModelAndView("redirect:/cervejas/novo");
 	}
+
+	
 	
 	
 }
