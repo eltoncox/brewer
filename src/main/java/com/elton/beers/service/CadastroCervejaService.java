@@ -13,7 +13,7 @@ public class CadastroCervejaService {
 	@Autowired
 	private Cervejas cervejas;// salvar as cerveja
 	
-	@Transactional
+	@Transactional // controlando a transação na mão
 	public void salvar(Cerveja cerveja) {
 		cervejas.save(cerveja);
 	}

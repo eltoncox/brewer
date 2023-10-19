@@ -30,7 +30,7 @@ public class Cerveja {
 	@NotBlank(message = "Nome é obrigatório")
 	private String nome;
 
-	@Size(min = 1, max = 100, message = "O tamanho da descrição deve estar entre 1 e 50")
+	@Size(min = 1, max = 100, message = "O tamanho da descrição deve estar entre 1 e 100")
 	private String descricao;
 
 	private BigDecimal valor;
